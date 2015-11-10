@@ -8,17 +8,27 @@ $(document).ready(function() {
     $('.ryu-still').show();
   })
   .mousedown(function() {
-    // play hadouken sound
-    console.log('mousedown');
+    playHadouken(); // play hadouken sound
     $('.ryu-ready').hide();
     $('.ryu-throwing').show();
-    $('.hadouken').show();
-    // show hadouken and animate it to the right of the screen
+    $('.hadouken').finish().show().animate(
+      {'left': '1040px'},
+      500,
+      function() { //this function gets called when the animation completes. We are saying to hide the hadouken then set its left value back to 540px
+        $(this).hide();
+        $(this).css('left', '540px');
+      }
+    );
   })
   .mouseup(function() {
-    console.log('mouseup');
     $('.ryu-throwing').hide();
     $('.ryu-ready').show();
     // ryu goes back to his ready position
   });
 });
+//play audio
+function playHadouken() {
+  $('#hadouken-sound')[0].volume = 0.5;
+  $('#hadouken-sound')[0].load();
+  $('#hadouken-sound')[0].play();
+}
