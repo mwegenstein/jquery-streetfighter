@@ -24,6 +24,18 @@ $(document).ready(function() {
     $('.ryu-throwing').hide();
     $('.ryu-ready').show();
     // ryu goes back to his ready position
+  })
+  $(document).keydown(function(e) {
+    if(e.keyCode == 88) {
+      $('.minus-cool').hide();
+      $('.ryu-cool').show();
+      console.log ("keydown");
+    } 
+  })
+  .keyup(function() {
+    $('.ryu-cool').hide();
+    $('.minus-cool').show();
+    console.log ("keyup");
   });
 });
 //play audio
